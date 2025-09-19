@@ -3,10 +3,10 @@
 
 function Message() {
     // Define a constant for the user's name
-    const name = "Madhu Kumar K S"
+    const name = "Welcome to React Tutorials"
     // Render a heading with a greeting
     if (name)
-        return <h1>Hello {name}</h1>
+        return <h1>Hello: {name}</h1>
     return <h1> Hello from React App</h1>
 }
 
