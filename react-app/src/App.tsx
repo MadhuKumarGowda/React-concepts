@@ -9,6 +9,7 @@ import PropsListGroup from "./components/PropsListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button_passChild";
 import Button_prop from "./components/Button_prop";
+import Alert_model from "./components/Alert_model";
 
 /**
  * Main application component rendering various demo components.
@@ -35,6 +36,9 @@ function App() {
   return (
     <>
       <Message />
+      <hr />
+      <h4> Alert Model Demo</h4>
+      <Alert_model />
       <h4>List Group Demo</h4>
       <ListGroups />
       <br />
