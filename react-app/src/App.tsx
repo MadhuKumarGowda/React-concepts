@@ -6,7 +6,7 @@
 import Message from "./Message"; // Import the Message component from the local file
 import ListGroups from "./components/ListGroups"; // Import the ListGroups component
 import PropsListGroup from "./components/PropsListGroup"; // Import the PropsListGroup component
-
+import Alert from "./components/Alert";
 // Define the main App component
 /**
  * The main application component that renders various demo components.
@@ -41,7 +41,11 @@ function App() {
       <Message />
       <h4>List Group Demo</h4>
       <ListGroups />
-
+      <br />
+      <Alert>
+        Hello from <span>Alert child component</span>
+      </Alert>
+      <br />
       <PropsListGroup
         items={cities}
         title="Indian Top 5 Cities"
