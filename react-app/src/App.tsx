@@ -51,10 +51,11 @@ function App() {
       />
       <br />
       <h4> Button - Pass HTML component as Props</h4>
-      <Button>
-        <button type="button" className="btn btn-primary">
-          Primary
-        </button>
+      <Button onclick={() => console.log("Button 1 clicked.")}>
+        Primary Button
+      </Button>
+      <Button color="danger" onclick={() => console.log("Button 2 clicked.")}>
+        Danger Button
       </Button>
       <br />
       <h4> Button: Pass Child as Prop</h4>
