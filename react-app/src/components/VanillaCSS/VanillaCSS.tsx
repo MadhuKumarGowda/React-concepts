@@ -33,8 +33,18 @@ const VanillaCSS = () => {
       >
         Top indian Players{" "}
       </h2>
-      {/* Using a class from the global CSS (Vanilla CSS) */}
-      <ul className="list-group">{item_list}</ul>
+      <h5>Border is implemented using inline css</h5>
+      {/* Using a class from the global CSS (Vanilla CSS) inline css as well */}
+      <ul
+        className="list-group"
+        style={{
+          borderRadius: "3rem",
+          border: "2px solid black",
+          padding: "1rem",
+        }}
+      >
+        {item_list}
+      </ul>
     </>
   );
 };
