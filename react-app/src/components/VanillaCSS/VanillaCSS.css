@@ -1,0 +1,13 @@
+/* Remove default list styling and padding */
+.list-group{
+    list-style: none;
+    padding: 0;
+}
+
+/* Style for each list item */
+.list-group-item{
+    background-color: lightblue; /* Set background color */
+    margin: 5px 0;              /* Vertical spacing between items */
+    padding: 10px;              /* Inner spacing */
+    border-radius: 5px;         /* Rounded corners */
+}
