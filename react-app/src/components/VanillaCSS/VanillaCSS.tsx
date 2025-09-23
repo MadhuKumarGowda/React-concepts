@@ -1,6 +1,7 @@
 // Importing the global CSS file (Vanilla CSS)
 // This will apply styles globally to the application
 import "./VanillaCSS.css";
+import { FaRegCalendarCheck } from "react-icons/fa6";
 
 // Importing the CSS Module
 // Styles imported as an object, scoped locally to this component
@@ -33,6 +34,8 @@ const VanillaCSS = () => {
       >
         Top indian Players{" "}
       </h2>
+      {/* Using a react-icon for a calendar check, styled with size and color */}
+      <FaRegCalendarCheck size={40} color="green" />
       <h5>Border is implemented using inline css</h5>
       {/* Using a class from the global CSS (Vanilla CSS) inline css as well */}
       <ul
