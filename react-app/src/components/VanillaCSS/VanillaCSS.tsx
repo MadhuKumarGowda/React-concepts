@@ -1,7 +1,10 @@
-// Import React (optional in modern React, but good for clarity)
-// import React from 'react';
-
+// Importing the global CSS file (Vanilla CSS)
+// This will apply styles globally to the application
 import "./VanillaCSS.css";
+
+// Importing the CSS Module
+// Styles imported as an object, scoped locally to this component
+import vanillaStyles from "./VanillaCSS.module.css";
 
 // Functional component definition for VanillaCSS
 const VanillaCSS = () => {
@@ -15,19 +18,25 @@ const VanillaCSS = () => {
 
   const item_list = players.map((player, index) => {
     return (
+      // Using a class from the global CSS (Vanilla CSS)
       <li className="list-group-item" key={index}>
         {player}
       </li>
     );
   });
-  // Render a div with the text "VanillaCSS"
+
   return (
     <>
-      <h2>Top indian Players </h2>
+      {/* Using classes from the CSS Module for scoped styling */}
+      <h2
+        className={[vanillaStyles.container, vanillaStyles.heading].join(" ")}
+      >
+        Top indian Players{" "}
+      </h2>
+      {/* Using a class from the global CSS (Vanilla CSS) */}
       <ul className="list-group">{item_list}</ul>
     </>
   );
 };
 
-// Export the VanillaCSS component as default
 export default VanillaCSS;
