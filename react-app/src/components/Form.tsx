@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-import { useRef } from "react";
+import { useState } from "react";
 
 /**
  * Form component that renders a contact form with name and phone input fields.
@@ -26,30 +26,15 @@ import { useRef } from "react";
  * ```
  */
 const Form = () => {
-  // Create refs to access DOM elements directly
-  const nameRef = useRef<HTMLInputElement>(null);
-  const phone = useRef<HTMLInputElement>(null);
+  // State hook to manage form data with initial values for name and phone
+  const [person, setPerson] = useState({ name: "", phone: "" });
 
-  // Initialize person object to store form data
-  const person = { name: "", phone: 0 };
-
-  // Handle form submission event
+  // Form submission handler that prevents default browser behavior and logs form data
   const handleSubmit = (event: React.FormEvent) => {
     // Prevent the default form submission behavior (page reload)
     event.preventDefault();
-
-    // Extract name value from input if ref is not null
-    if (nameRef.current != null) {
-      person.name = nameRef.current.value;
-    }
-
-    // Extract phone value from input and convert to number if ref is not null
-    if (phone.current != null) {
-      person.phone = parseInt(phone.current.value);
-    }
-
-    // Log the collected form data to console
-    console.log(person);
+    // Log the current person state to console for debugging
+    console.log("Person State Hook", person);
   };
   return (
     // Render the form with onSubmit handler to prevent default submission
@@ -59,8 +44,16 @@ const Form = () => {
         <label htmlFor="name" className="form-label">
           Name
         </label>
-        {/* Text input for user's name */}
-        <input ref={nameRef} id="name" type="text" className="form-control" />
+        {/* Text input for user's name - fully managed by React as single source of truth (Value attribute), not DOM */}
+        <input
+          onChange={(event) =>
+            setPerson({ ...person, name: event.target.value })
+          }
+          value={person.name}
+          id="name"
+          type="text"
+          className="form-control"
+        />
       </div>
 
       {/* Phone input field container */}
@@ -68,8 +61,16 @@ const Form = () => {
         <label htmlFor="phone" className="form-label">
           Phone
         </label>
-        {/* Number input for user's phone */}
-        <input ref={phone} id="phone" type="number" className="form-control" />
+        {/* Number input for user's phone - fully managed by React as single source of truth, not DOM */}
+        <input
+          onChange={(event) =>
+            setPerson({ ...person, phone: parseInt(event.target.value) })
+          }
+          value={person.phone}
+          id="phone"
+          type="number"
+          className="form-control"
+        />
       </div>
 
       {/* Submit button with Bootstrap primary styling */}
