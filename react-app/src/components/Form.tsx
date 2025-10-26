@@ -6,6 +6,8 @@
  * @since 1.0.0
  */
 
+import { useRef } from "react";
+
 /**
  * Form component that renders a contact form with name and phone input fields.
  *
@@ -24,10 +26,30 @@
  * ```
  */
 const Form = () => {
+  // Create refs to access DOM elements directly
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phone = useRef<HTMLInputElement>(null);
+
+  // Initialize person object to store form data
+  const person = { name: "", phone: 0 };
+
+  // Handle form submission event
   const handleSubmit = (event: React.FormEvent) => {
     // Prevent the default form submission behavior (page reload)
     event.preventDefault();
-    console.log("Form Submitted.");
+
+    // Extract name value from input if ref is not null
+    if (nameRef.current != null) {
+      person.name = nameRef.current.value;
+    }
+
+    // Extract phone value from input and convert to number if ref is not null
+    if (phone.current != null) {
+      person.phone = parseInt(phone.current.value);
+    }
+
+    // Log the collected form data to console
+    console.log(person);
   };
   return (
     // Render the form with onSubmit handler to prevent default submission
@@ -38,7 +60,7 @@ const Form = () => {
           Name
         </label>
         {/* Text input for user's name */}
-        <input id="name" type="text" className="form-control" />
+        <input ref={nameRef} id="name" type="text" className="form-control" />
       </div>
 
       {/* Phone input field container */}
@@ -47,7 +69,7 @@ const Form = () => {
           Phone
         </label>
         {/* Number input for user's phone */}
-        <input id="phone" type="number" className="form-control" />
+        <input ref={phone} id="phone" type="number" className="form-control" />
       </div>
 
       {/* Submit button with Bootstrap primary styling */}
